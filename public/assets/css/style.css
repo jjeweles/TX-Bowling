@@ -1,0 +1,16 @@
+a:hover {
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+#ita-table {
+    text-align: center;
+}
+
+#search {
+    display: inline-block;
+}
+
+.disabled-link {
+    pointer-events: none;
+}

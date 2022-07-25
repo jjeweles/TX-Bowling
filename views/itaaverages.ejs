@@ -1,0 +1,66 @@
+<%- include('partials/header') -%>
+<section id="banner">
+    <div class="content">
+        <header class="itapage">
+
+            <section id="search" class="alt">
+                <h2>-- ITA Averages --</h2>
+                <form method="post" action="/itasearch">
+                    <input type="text" name="query" id="query" placeholder="Enter last name..."/>
+                </form>
+            </section>
+        </header>
+        <table class="table table-striped" id="ita-table">
+            <thead>
+            <tr>
+                <th id="ita-table">ID</th>
+                <th id="ita-table">Last Name</th>
+                <th id="ita-table">First Name</th>
+                <th id="ita-table">M Initial</th>
+                <th id="ita-table">SFX</th>
+                <th id="ita-table">City</th>
+                <th id="ita-table">Total Pins</th>
+                <th id="ita-table">Current Games</th>
+                <th id="ita-table">Current Average</th>
+                <th id="ita-table">72 Game Average</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let bowler of bowlers) { %>
+                <tr>
+                    <td><%= bowler.id %></td>
+                    <td><%= bowler.lastName %></td>
+                    <td><%= bowler.firstName %></td>
+                    <td><%= bowler.mInitial %></td>
+                    <td><%= bowler.suffix %></td>
+                    <td><%= bowler.city %></td>
+                    <td><%= bowler.totalPins %></td>
+                    <td><%= bowler.currGames %></td>
+                    <td><%= bowler.currAvg %></td>
+                    <td><%= bowler.sevenTwoAvg %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <ul class="pagination">
+            <% if (!prevPage) { %>
+                <li class="disabled-link"><a href="#">&laquo;</a></li>
+            <% } else { %>
+                <li><a href="/itaaverages?page=<%= page - 1 %>">&laquo;</a></li>
+            <% } %>
+            <% for (let i = 1; i <= page_list; i++) { %>
+                <li class="page-item">
+                    <a href="/itaaverages?page=<%= i %>" class="page-link"><%= i %></a>
+                </li>
+            <% } %>
+            <% if (!nextPage) { %>
+                <li class="disabled-link"><a href="#">&raquo;</a></li>
+            <% } else if (isNaN(page)) { %>
+                <li><a href="/itaaverages?page=2">&raquo;</a></li>
+            <% } else { %>
+                <li><a href="/itaaverages?page=<%= parseInt(page) + 1 %>">&raquo;</a></li>
+            <% } %>
+        </ul>
+    </div>
+</section>
+<%- include('partials/footer') -%>

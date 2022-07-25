@@ -1,0 +1,41 @@
+body {
+    background-color: #d3d6db;
+}
+
+.navbar {
+    background-color: #d3d6db !important;
+    border-bottom: 1px solid #be3144;
+}
+
+.navbar-brand {
+    color: #be3144;
+}
+
+.side-menu {
+    background-color: #d3d6db;
+    border-right: 1px solid #be3144;
+    border-bottom: 1px solid #be3144;
+}
+
+.side-menu h5 {
+    border-bottom: 1px solid #be3144;
+    margin-bottom: 10px;
+}
+
+.side-menu a {
+    color: #000;
+    text-decoration: #3a4750;
+    text-shadow: #adadad 0.1em 0.1em 0.2em;
+    text-transform: lowercase;
+}
+
+.side-menu a:hover {
+    color: #be3144;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.2s ease-in-out;
+}
+
+.side-menu > ul {
+    list-style-type: none;
+}
