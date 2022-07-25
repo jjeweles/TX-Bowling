@@ -11,6 +11,35 @@ a:hover {
     display: inline-block;
 }
 
+#active {
+    display: none;
+}
+
 .disabled-link {
     pointer-events: none;
+}
+
+.pag-container {
+    padding: 2px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+li {
+    border-radius: 10px;
+    padding: 0 2px 2px;
+}
+
+li a {
+    border-bottom: 0;
+    padding: 5px;
+}
+
+.pagination li:hover {
+    background-color: rgba(190, 49, 68, 0.28);
+}
+
+ul.pagination li:last-child, ul.pagination li:first-child {
+    padding-left: 0;
+    padding-right: 0;
 }

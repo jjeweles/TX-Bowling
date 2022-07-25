@@ -5,7 +5,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const Bowler = require('./models/itabowlers.js');
-const {parse} = require("nodemon/lib/cli");
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/txtourneys', {useNewUrlParser: true})
@@ -117,7 +116,7 @@ app.post('/itasearch', async (req, res) => {
         const lastName = toTitleCase(req.body.query);
         // find bowler with lastName entered and sort by lastName and then firstName
         const bowlers = await Bowler.find({'lastName': lastName}).sort({'firstName': 1});
-        res.render('itaaverages', {bowlers, page_list, page, nextPage, prevPage});
+        res.render('itaaverages', {bowlers, page_list, page:1, nextPage, prevPage});
     } catch (err) {
         console.error(err);
     }

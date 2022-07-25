@@ -42,25 +42,37 @@
             <% } %>
             </tbody>
         </table>
-        <ul class="pagination">
-            <% if (!prevPage) { %>
-                <li class="disabled-link"><a href="#">&laquo;</a></li>
-            <% } else { %>
-                <li><a href="/itaaverages?page=<%= page - 1 %>">&laquo;</a></li>
-            <% } %>
-            <% for (let i = 1; i <= page_list; i++) { %>
-                <li class="page-item">
-                    <a href="/itaaverages?page=<%= i %>" class="page-link"><%= i %></a>
-                </li>
-            <% } %>
-            <% if (!nextPage) { %>
-                <li class="disabled-link"><a href="#">&raquo;</a></li>
-            <% } else if (isNaN(page)) { %>
-                <li><a href="/itaaverages?page=2">&raquo;</a></li>
-            <% } else { %>
-                <li><a href="/itaaverages?page=<%= parseInt(page) + 1 %>">&raquo;</a></li>
-            <% } %>
-        </ul>
+        <div class="pag-container">
+            <ul class="pagination">
+                <% if (!prevPage) { %>
+                    <li class="disabled-link"><a href="#">&laquo;</a></li>
+                <% } else { %>
+                    <li><a href="/itaaverages?page=1">&laquo;</a></li>
+                    <% if (page > 10) { %>
+                        <li><a href="/itaaverages?page=<%= page - 10 %>">&hellip;</a></li>
+                    <% } else { %>
+                        <li><a href="/itaaverages?page=1">&hellip;</a></li>
+                    <% } %>
+                <% } %>
+                <% for (let i = page; i <= (parseInt(page) + 19); i++) { %>
+                    <% if (i <= page_list) { %>
+                        <li><a href="/itaaverages?page=<%= i %>"><%= i %></a></li>
+                    <% } %>
+                <% } %>
+                <% if (!nextPage) { %>
+                    <li class="disabled-link"><a href="#">&raquo;</a></li>
+                <% } else if (isNaN(page)) { %>
+                    <li><a href="/itaaverages?page=2">&raquo;</a></li>
+                <% } else { %>
+                    <% if (page < (page_list - 10)) { %>
+                        <li><a href="/itaaverages?page=<%= parseInt(page) + 10 %>">&hellip;</a></li>
+                    <% } else { %>
+                        <li><a href="/itaaverages?page=<%= page_list %>">&hellip;</a></li>
+                    <% } %>
+                    <li><a href="/itaaverages?page=<%= page_list %>">&raquo;</a></li>
+                <% } %>
+            </ul>
+        </div>
     </div>
 </section>
 <%- include('partials/footer') -%>
