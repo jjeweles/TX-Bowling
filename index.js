@@ -67,6 +67,7 @@ app.get('/calendar', (req, res) => {
 
 // route for getting all the bowlers
 app.get('/itaaverages', async (req, res) => {
+    // error handling
     try {
         // variables for the query
         const {page, limit} = req.query;
@@ -92,6 +93,7 @@ app.get('/itaaverages', async (req, res) => {
 });
 
 app.post('/itasearch', async (req, res) => {
+    // error handling
     try {
         const {page, limit} = req.query;
         const options = {
