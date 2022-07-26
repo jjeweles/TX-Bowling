@@ -1,10 +1,19 @@
 a:hover {
     font-weight: bold;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 #ita-table {
     text-align: center;
+    border: 1px solid #ccc;
+}
+
+thead th {
+    padding-top: 10px;
+}
+
+#banner {
+    padding-top: 26px !important;
 }
 
 #search {
@@ -25,18 +34,22 @@ a:hover {
     font-size: 1rem;
 }
 
-li {
-    border-radius: 10px;
-    padding: 0 2px 2px;
-}
-
 li a {
     border-bottom: 0;
     padding: 5px;
 }
 
+.pagination li {
+    width: 38px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 2px 2px;
+}
+
 .pagination li:hover {
     background-color: rgba(190, 49, 68, 0.28);
+    transition: all 0.4s ease-in-out;
 }
 
 ul.pagination li:last-child, ul.pagination li:first-child {
