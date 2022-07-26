@@ -69,7 +69,7 @@ app.get('/itaaverages', async (req, res) => {
     // error handling
     try {
         // variables for the query
-        const {page, limit} = req.query;
+        let {page, limit} = req.query;
         // options for the pagination
         const options = {
             page: parseInt(page, 10) || 1,
@@ -85,7 +85,8 @@ app.get('/itaaverages', async (req, res) => {
         let page_list = bowler.totalPages;
         let prevPage = bowler.hasPrevPage;
         let nextPage = bowler.hasNextPage;
-        res.render('itaaverages', {bowlers, page_list, page, nextPage, prevPage});
+        console.log(req.query);
+        res.render('itaaverages', {bowlers, page_list, page: 1, nextPage, prevPage});
     } catch (err) {
         console.error(err);
     }
@@ -107,8 +108,10 @@ app.post('/itasearch', async (req, res) => {
         let page_list = bowler.totalPages;
         let prevPage = bowler.hasPrevPage;
         let nextPage = bowler.hasNextPage;
+
         // function to capitalize first letter and leave rest lowercase on user input
         function toTitleCase(str) {
+            if(!req.body.query) return;
             return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
         }
 
@@ -116,7 +119,7 @@ app.post('/itasearch', async (req, res) => {
         const lastName = toTitleCase(req.body.query);
         // find bowler with lastName entered and sort by lastName and then firstName
         const bowlers = await Bowler.find({'lastName': lastName}).sort({'firstName': 1});
-        res.render('itaaverages', {bowlers, page_list, page:1, nextPage, prevPage});
+        res.render('itaaverages', {bowlers, page_list, page: 1, nextPage, prevPage});
     } catch (err) {
         console.error(err);
     }

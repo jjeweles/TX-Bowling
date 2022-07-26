@@ -1,6 +1,19 @@
+/* NAVIGATION
+==================================================
+1. STYLING ITA AVERAGES PAGE
+*/
+
+
 a:hover {
     font-weight: bold;
     transition: all 0.4s ease-in-out;
+}
+
+
+/* ALL STYLING FOR ITA AVERAGES PAGE */
+.itapage {
+    display: flex;
+    justify-content: space-between;
 }
 
 #ita-table {
@@ -49,10 +62,17 @@ li a {
 
 .pagination li:hover {
     background-color: rgba(190, 49, 68, 0.28);
+    font-weight: bold;
     transition: all 0.4s ease-in-out;
 }
 
 ul.pagination li:last-child, ul.pagination li:first-child {
     padding-left: 0;
     padding-right: 0;
+}
+
+.ita-select {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 30px;
 }
