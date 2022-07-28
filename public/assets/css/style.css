@@ -9,6 +9,57 @@ a:hover {
     transition: all 0.4s ease-in-out;
 }
 
+/* ALL STYLING FOR ADDING TOURNEY PAGE */
+.tournamentForm {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #E6EBEE;
+    width: 450px;
+}
+
+.tournamentForm input, select {
+    margin-bottom: 15px;
+    width: 400px;
+}
+
+/* Removes the clear button from date inputs */
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+/* Always display the drop down caret */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #222;
+}
+
+/* A few custom styles for date inputs */
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #9FA9BA;
+    font-size: 16px;
+    border: solid 1px rgba(210, 215, 217, 0.75);
+    padding: 5px;
+    display: inline-block !important;
+    visibility: visible !important;
+    border-radius: 5px;
+}
+
+input[type="date"]:focus {
+    color: #9FA9BA;
+    box-shadow: none;
+    outline: 2px solid #be3144 !important;
+    border-radius: 5px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
 
 /* ALL STYLING FOR ITA AVERAGES PAGE */
 .itapage {
@@ -81,9 +132,17 @@ ul.pagination li:last-child, ul.pagination li:first-child {
     display: none;
 }
 
-@media
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
+/* RESPONSIVE CSS FOR SMALLER SCREENS AND MOBILE */
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+
+    .tournamentForm {
+        width: 100%;
+    }
+
+    .tournamentForm input, select {
+        width: 100%;
+    }
 
     /* Force table to not be like tables anymore */
     table, thead, tbody, th, td, tr {
@@ -97,7 +156,9 @@ only screen and (max-width: 760px),
         left: -9999px;
     }
 
-    tr { border: 1px solid #ccc; }
+    tr {
+        border: 1px solid #ccc;
+    }
 
     td {
         /* Behave  like a "row" */
@@ -123,25 +184,56 @@ only screen and (max-width: 760px),
     /*
     Label the data
     */
-    td:nth-of-type(1):before { content: "ID"; }
-    td:nth-of-type(2):before { content: "Last Name"; }
-    td:nth-of-type(3):before { content: "First Name"; }
-    td:nth-of-type(4):before { content: "M Initial"; }
-    td:nth-of-type(5):before { content: "SFX"; }
-    td:nth-of-type(6):before { content: "City"; }
-    td:nth-of-type(7):before { content: "Total Pins"; }
-    td:nth-of-type(8):before { content: "Current Games"; }
-    td:nth-of-type(9):before { content: "Current Average"; }
-    td:nth-of-type(10):before { content: "72 Game Average"; }
+    td:nth-of-type(1):before {
+        content: "ID";
+    }
+
+    td:nth-of-type(2):before {
+        content: "Last Name";
+    }
+
+    td:nth-of-type(3):before {
+        content: "First Name";
+    }
+
+    td:nth-of-type(4):before {
+        content: "M Initial";
+    }
+
+    td:nth-of-type(5):before {
+        content: "SFX";
+    }
+
+    td:nth-of-type(6):before {
+        content: "City";
+    }
+
+    td:nth-of-type(7):before {
+        content: "Total Pins";
+    }
+
+    td:nth-of-type(8):before {
+        content: "Current Games";
+    }
+
+    td:nth-of-type(9):before {
+        content: "Current Average";
+    }
+
+    td:nth-of-type(10):before {
+        content: "72 Game Average";
+    }
 }
 
 @media (max-width: 660px) {
     .pag-responsive-show {
         display: none;
     }
+
     .mobile-pagination {
         display: inline;
     }
+
     ul.pagination li {
         display: inline-block !important;
         width: 38px;
@@ -152,6 +244,7 @@ only screen and (max-width: 760px),
 
 
     }
+
     ul.pagination {
         position: relative;
         bottom: 25px !important;

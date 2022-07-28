@@ -56,12 +56,12 @@ app.get('/forums', (req, res) => {
     res.render('forums');
 });
 
-app.get('/addtourney', (req, res) => {
-    res.render('addtourney');
-});
-
 app.get('/calendar', (req, res) => {
     res.render('calendar');
+});
+
+app.get('/addtourney', (req, res) => {
+    res.render('addtourney');
 });
 
 // route for getting all the bowlers
