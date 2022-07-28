@@ -81,11 +81,11 @@ app.get('/itaaverages', async (req, res) => {
         }
         // paginate the bowlers in the database
         let bowler = await Bowler.paginate({}, options);
-        let bowlers = bowler.docs;
         let page_list = bowler.totalPages;
         let prevPage = bowler.hasPrevPage;
         let nextPage = bowler.hasNextPage;
-        console.log(req.query);
+
+        let bowlers = bowler.docs;
         res.render('itaaverages', {bowlers, page_list, page: 1, nextPage, prevPage});
     } catch (err) {
         console.error(err);
