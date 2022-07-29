@@ -1,35 +1,40 @@
-<%- include('partials/header') -%>
+<% layout('./layouts/boilerplate') %>
 <section id="banner">
     <div class="content">
         <header>
             <h2>-- Add A Tournament --</h2>
         </header>
+        <p id="thank-you-message">Tournament Added Successfully! Redirecting...</p>
         <div class="form-group tournamentForm">
-            <label for="tournamentName">Tournament Name</label>
-            <input type="text" class="form-control" id="tournamentName" placeholder="Tournament Name">
-            <label for="tournamentDate">Tournament Date</label>
-            <input type="date" class="form-control" id="tournamentDate" placeholder="Tournament Date">
-            <label for="tournamentLocation">Tournament Location</label>
-            <select class="form-control" id="tournamentLocation">
-                <option selected disabled>Select a location</option>
-                <option value="Austin">Austin</option>
-                <option value="Dallas">Dallas</option>
-                <option value="Houston">Houston</option>
-                <option value="San Antonio">San Antonio</option>
-                <option value="Other">Other</option>
-            </select>
-            <label for="tournamentFlyer">Tournament Flyer</label>
-            <input type="file" class="form-control" id="tournamentFlyer" placeholder="Tournament Flyer">
-            <label for="tournamentContactName">Tournament Contact Name</label>
-            <input type="text" class="form-control" id="tournamentContactName" placeholder="Tournament Contact Name">
-            <label for="tournamentContactEmail">Tournament Contact Email</label>
-            <input type="email" class="form-control" id="tournamentContactEmail" placeholder="Tournament Contact Email">
-            <label for="tournamentContactPhone">Tournament Contact Phone</label>
-            <input type="tel" class="form-control" id="tournamentContactPhone" placeholder="Tournament Contact Phone"
-                   onInput="this.value=phoneFormat(this.value)">
-            <input type="submit">
-
+            <form method="post" action="/addtourneypost" class="tournamentForm2">
+                <label for="tournamentName">Tournament Name</label>
+                <input type="text" class="form-control" name="tournamentName" id="tournamentName" placeholder="Tournament Name" required>
+                <label for="tournamentDate">Tournament Date</label>
+                <input type="date" class="form-control" name="tournamentDate" id="tournamentDate" placeholder="Tournament Date" required>
+                <label for="tournamentLocation">Tournament Location</label>
+                <select class="form-control" name="tournamentLocation" id="tournamentLocation" required>
+                    <option selected disabled>Select a location</option>
+                    <option value="Austin">Austin</option>
+                    <option value="Dallas">Dallas</option>
+                    <option value="Houston">Houston</option>
+                    <option value="San Antonio">San Antonio</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label for="tournamentFlyer">Tournament Flyer</label>
+                <input type="file" class="form-control" name="tournamentFlyer" id="tournamentFlyer" placeholder="Tournament Flyer">
+                <label for="tournamentContactName">Tournament Contact Name</label>
+                <input type="text" class="form-control" name="tournamentContactName" id="tournamentContactName"
+                       placeholder="Tournament Contact Name">
+                <label for="tournamentContactEmail">Tournament Contact Email</label>
+                <input type="email" class="form-control" name="tournamentContactEmail" id="tournamentContactEmail"
+                       placeholder="Tournament Contact Email">
+                <label for="tournamentContactPhone">Tournament Contact Phone</label>
+                <input type="tel" class="form-control" name="tournamentContactPhone" id="tournamentContactPhone"
+                       placeholder="Tournament Contact Phone"
+                       onInput="this.value=phoneFormat(this.value)">
+                <input type="submit">
+            </form>
         </div>
     </div>
 </section>
-<%- include('partials/footer') -%>
+<% layout('./layouts/boilerplate') %>
