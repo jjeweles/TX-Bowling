@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 const express = require('express');
 const path = require('path');
 const ejsMate = require('ejs-mate');
-const cities = require('./routes/cities');
-const tourneys = require('./routes/tourneys');
+const AppError = require('./utils/AppError');
+const indexRoutes = require('./routes/indexRoutes');
+const cityRoutes = require('./routes/cityRoutes');
+const tourneyRoutes = require('./routes/tourneyRoutes');
 const app = express();
 
 // Connect to MongoDB
@@ -23,20 +25,19 @@ app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
-
-app.use('/', cities);
-app.use('/', tourneys);
-
-app.get('/forums', (req, res) => {
-    res.render('forums');
-});
+app.use('/', indexRoutes)
+app.use('/', cityRoutes);
+app.use('/', tourneyRoutes);
 
 // error handler for pages that don't exist
 app.all('*', (req, res) => {
     res.render('404');
+});
+
+// error handler for all other errors
+app.use((err, req, res, next) => {
+    const {status = 500, message = 'Something Went Wrong'} = err;
+    console.log(status, message);
 });
 
 app.listen(3000, () => {

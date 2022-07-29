@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const wrapAsync = require('../utils/wrapAsync');
+const indexController = require('../controllers/indexController');
+
+router.get('/', indexController.getIndex);
+
+router.get('/forums', indexController.getForums);
+
+module.exports = router;
