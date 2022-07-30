@@ -20,4 +20,6 @@ router.get('/itaaverages', wrapAsync(tourneyController.getItaAverages));
 
 router.post('/itasearch', wrapAsync(tourneyController.getItaSearch));
 
+router.get('/tournaments/:id', wrapAsync(tourneyController.getTournament));
+
 module.exports = router;

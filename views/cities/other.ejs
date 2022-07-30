@@ -2,15 +2,18 @@
 <section id="banner">
     <div class="content">
         <header>
-            <h2>-- Other Areas --</h2>
+            <h2>-- Other Cities --</h2>
         </header>
         <div class="tournamentDisplay">
             <% for (let tournament of tournaments) { %>
                 <div class="tournament">
                     <h3><%= tournament.tournamentName %></h3>
                     <p>
-                        <img src="<%= tournament.tournamentFlyer[0].url %>" alt="<%= tournament.tournamentName %>" class="tournamentFlyer">
-                        <b>Date:</b> <%= tournament.tournamentDate[0] %> <%= tournament.tournamentDate[1] %>, <%= tournament.tournamentDate[2] %><br/>
+                        <% if (tournament.tournamentFlyer[0] !== undefined) { %>
+                            <img src="<%= tournament.tournamentFlyer[0].url %>" alt="<%= tournament.tournamentName %>"
+                                 class="tournamentFlyer">
+                        <% } %>
+                        <b>Date:</b> <%= tournament.tournamentDate.toDateString() %><br>
                         <b>Director:</b> <%= tournament.tournamentContactName %><br/>
                         <b>Contact #:</b> <%= tournament.tournamentContactPhone %>
                     </p>

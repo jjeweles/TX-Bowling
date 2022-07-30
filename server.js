@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
@@ -20,11 +20,11 @@ mongoose.connect('mongodb://localhost:27017/txtourneys', {useNewUrlParser: true}
     .catch(err => console.error('Could not connect to MongoDB...', err));
 
 app.use(express.static('public'));
+app.use(express.static("node_modules/bootstrap/css"));
+app.use(express.static("node_modules/bootstrap/js"));
+app.use(express.static("node_modules/jquery/js"));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use("/css", express.static(__dirname + "node_modules/bootstrap/css"));
-app.use("/js", express.static(__dirname + "node_modules/bootstrap/js"));
-app.use("/js", express.static(__dirname + "node_modules/jquery/js"));
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');

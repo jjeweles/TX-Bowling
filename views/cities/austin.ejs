@@ -9,8 +9,7 @@
                 <div class="tournament">
                     <h3><%= tournament.tournamentName %></h3>
                     <p>
-                        <img src="<%= tournament.tournamentFlyer[0].url %>" alt="<%= tournament.tournamentName %>" class="tournamentFlyer">
-                        <b>Date:</b> <%= tournament.tournamentDate[0] %> <%= tournament.tournamentDate[1] %>, <%= tournament.tournamentDate[2] %><br/>
+                        <b>Date:</b> <%= tournament.tournamentDate.toDateString() %><br>
                         <b>Director:</b> <%= tournament.tournamentContactName %><br/>
                         <b>Contact #:</b> <%= tournament.tournamentContactPhone %>
                     </p>

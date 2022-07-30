@@ -6,10 +6,7 @@ module.exports.getCalendar = (req, res) => {
 }
 
 module.exports.addTourney = (req, res) => {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const days = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
-    const years = ["2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"];
-    res.render('addtourney', {months, days, years});
+    res.render('addtourney');
 }
 
 module.exports.addTourneyToDB = async (req, res, next) => {
@@ -67,4 +64,10 @@ module.exports.getItaSearch = async (req, res, next) => {
     // find bowler with lastName entered and sort by lastName and then firstName
     const bowlers = await Bowler.find({'lastName': lastName}).sort({'firstName': 1});
     res.render('itaaverages', {bowlers, page_list, page: 1, nextPage, prevPage});
+}
+
+module.exports.getTournament = async (req, res, next) => {
+    const {id} = req.params;
+    const tournament = await Tourney.findById(id);
+    res.render('tournament', {tournament});
 }

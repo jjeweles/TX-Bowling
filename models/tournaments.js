@@ -4,7 +4,8 @@ const paginate = require('mongoose-paginate-v2');
 
 const tourneySchema = new mongoose.Schema({
     tournamentName: String,
-    tournamentDate: [],
+    // tournamentDate: [],
+    tournamentDate: Date,
     tournamentLocation: String,
     tournamentFlyer: [
         {
