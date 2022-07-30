@@ -1,9 +1,14 @@
+if(process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 /** @member {Object} */
 const mongoose = require('mongoose');
 const express = require('express');
 const path = require('path');
 const ejsMate = require('ejs-mate');
 const AppError = require('./utils/AppError');
+const {errorHandler} = require("./utils/errorHandler");
 const indexRoutes = require('./routes/indexRoutes');
 const cityRoutes = require('./routes/cityRoutes');
 const tourneyRoutes = require('./routes/tourneyRoutes');
@@ -35,10 +40,7 @@ app.all('*', (req, res) => {
 });
 
 // error handler for all other errors
-app.use((err, req, res, next) => {
-    const {status = 500, message = 'Something Went Wrong'} = err;
-    console.log(status, message);
-});
+app.use(errorHandler);
 
 app.listen(3000, () => {
     console.log('Listening On Port 3000');

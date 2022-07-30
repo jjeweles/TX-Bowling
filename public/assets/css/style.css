@@ -1,7 +1,8 @@
 /* NAVIGATION
 ==================================================
 1. STYLING ADD TOURNEY PAGE
-2. STYLING ITA AVERAGES PAGE
+2. STYLING TOURNAMENT SHOW PAGE
+3. STYLING ITA AVERAGES PAGE
 
 * light grey d3d6db
 * darker grey 3a4750
@@ -29,6 +30,22 @@ a:hover {
     font-weight: bold;
     box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
     padding: 10px;
+}
+
+.errorMsg {
+    width: fit-content;
+    padding: 12px;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.25);
+    color: #000;
+    font-weight: lighter;
+    margin-bottom: 5em;
+}
+
+.errorImage {
+    border: 1px solid #be3144;
+    border-radius: 50%;
+    display: block;
 }
 
 /* ALL STYLING FOR ADDING TOURNEY PAGE */
@@ -80,6 +97,25 @@ input[type="date"]:focus {
     border-radius: 5px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
+}
+
+/* ALL STYLING FOR TOURNAMENT SHOW PAGE */
+.tournamentDisplay {
+    display: flex;
+}
+
+.tournament {
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #E6EBEE;
+    width: 450px;
+}
+
+.tournamentFlyer {
+    max-width: 100%;
 }
 
 
@@ -270,5 +306,19 @@ ul.pagination li:last-child, ul.pagination li:first-child {
     ul.pagination {
         position: relative;
         bottom: 25px !important;
+    }
+
+    .image {
+        display: none !important;
+    }
+
+    .tournamentDisplay {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tournament {
+        width: 100%;
     }
 }

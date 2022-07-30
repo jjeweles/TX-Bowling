@@ -3,23 +3,24 @@ const mongoose = require('mongoose');
 const paginate = require('mongoose-paginate-v2');
 
 const tourneySchema = new mongoose.Schema({
-    tourneyName: String,
-    tourneyDate: Date,
-    tourneyCity: String,
-    tourneyImg:
+    tournamentName: String,
+    tournamentDate: [],
+    tournamentLocation: String,
+    tournamentFlyer: [
         {
-            data: Buffer,
-            contentType: String,
-        },
-    tourneyContactName: {
+            url: String,
+            filename: String
+        }
+    ],
+    tournamentContactName: {
         type: String,
         default: null
     },
-    tourneyContactEmail: {
+    tournamentContactEmail: {
         type: String,
         default: null
     },
-    tourneyContactPhone: {
+    tournamentContactPhone: {
         type: String,
         default: null
     }

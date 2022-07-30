@@ -1,4 +1,3 @@
-const wrapAsync = require("../utils/wrapAsync");
 const Bowler = require("../models/itabowlers.js");
 const Tourney = require("../models/tournaments.js");
 
@@ -7,25 +6,20 @@ module.exports.getCalendar = (req, res) => {
 }
 
 module.exports.addTourney = (req, res) => {
-    res.render('addtourney');
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const days = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
+    const years = ["2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"];
+    res.render('addtourney', {months, days, years});
 }
 
-module.exports.addTourneyToDB = wrapAsync(async (req, res, next) => {
-    const newTourney = new Tourney({
-        tourneyName: req.body.tournamentName,
-        tourneyDate: req.body.tournamentDate,
-        tourneyCity: req.body.tournamentLocation,
-        tourneyContactName: req.body.tournamentContactName,
-        tourneyContactEmail: req.body.tournamentContactEmail,
-        tourneyContactPhone: req.body.tournamentContactPhone
-    });
-    newTourney.save()
-        .then(() => console.log('Tourney added to database'))
-        .catch(err => console.error('Error adding tourney to database', err));
+module.exports.addTourneyToDB = async (req, res, next) => {
+    const newTourney = new Tourney(req.body);
+    newTourney.tournamentFlyer = req.files.map(file => ({url: file.path, filename: file.filename}));
+    newTourney.save();
     res.redirect('/addtourney');
-})
+}
 
-module.exports.getItaAverages = wrapAsync(async (req, res, next) => {
+module.exports.getItaAverages = async (req, res, next) => {
     // variables for the query
     let {page, limit} = req.query;
     // options for the pagination
@@ -45,9 +39,9 @@ module.exports.getItaAverages = wrapAsync(async (req, res, next) => {
 
     let bowlers = bowler.docs;
     res.render('itaaverages', {bowlers, page_list, page: 1, nextPage, prevPage});
-})
+}
 
-module.exports.getItaSearch = wrapAsync(async (req, res, next) => {
+module.exports.getItaSearch = async (req, res, next) => {
     const {page, limit} = req.query;
     const options = {
         page: parseInt(page, 10) || 1,
@@ -73,4 +67,4 @@ module.exports.getItaSearch = wrapAsync(async (req, res, next) => {
     // find bowler with lastName entered and sort by lastName and then firstName
     const bowlers = await Bowler.find({'lastName': lastName}).sort({'firstName': 1});
     res.render('itaaverages', {bowlers, page_list, page: 1, nextPage, prevPage});
-})
+}

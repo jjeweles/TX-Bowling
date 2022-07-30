@@ -2,8 +2,21 @@
 <section id="banner">
     <div class="content">
         <header>
-            <h2>-- Other --</h2>
+            <h2>-- Other Areas --</h2>
         </header>
-        <p>Page - add Other tourneys here.</p>
+        <div class="tournamentDisplay">
+            <% for (let tournament of tournaments) { %>
+                <div class="tournament">
+                    <h3><%= tournament.tournamentName %></h3>
+                    <p>
+                        <img src="<%= tournament.tournamentFlyer[0].url %>" alt="<%= tournament.tournamentName %>" class="tournamentFlyer">
+                        <b>Date:</b> <%= tournament.tournamentDate[0] %> <%= tournament.tournamentDate[1] %>, <%= tournament.tournamentDate[2] %><br/>
+                        <b>Director:</b> <%= tournament.tournamentContactName %><br/>
+                        <b>Contact #:</b> <%= tournament.tournamentContactPhone %>
+                    </p>
+                    <a href="/tournaments/<%= tournament.id %>">View</a>
+                </div>
+            <% } %>
+        </div>
     </div>
 </section>

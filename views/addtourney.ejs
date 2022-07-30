@@ -6,11 +6,28 @@
         </header>
         <p id="thank-you-message">Tournament Added Successfully! Redirecting...</p>
         <div class="form-group tournamentForm">
-            <form method="post" action="/addtourneypost" class="tournamentForm2">
+            <form method="post" action="/addtourneypost" class="tournamentForm2" enctype="multipart/form-data">
                 <label for="tournamentName">Tournament Name</label>
                 <input type="text" class="form-control" name="tournamentName" id="tournamentName" placeholder="Tournament Name" required>
+                <div>
                 <label for="tournamentDate">Tournament Date</label>
-                <input type="date" class="form-control" name="tournamentDate" id="tournamentDate" placeholder="Tournament Date" required>
+                    <select class="form-control" name="tournamentDate" id="tournamentDate">
+                        <% for (let month of months) { %>
+                        <option><%= month %></option>
+                        <% } %>
+                    </select>
+                    <select class="form-control" name="tournamentDate" id="tournamentDate">
+                        <% for (let day of days) { %>
+                            <option><%= day %></option>
+                        <% } %>
+                    </select>
+                    <select class="form-control" name="tournamentDate" id="tournamentDate">
+                        <% for (let year of years) { %>
+                            <option><%= year %></option>
+                        <% } %>
+                    </select>
+
+                </div>
                 <label for="tournamentLocation">Tournament Location</label>
                 <select class="form-control" name="tournamentLocation" id="tournamentLocation" required>
                     <option selected disabled>Select a location</option>
@@ -21,7 +38,7 @@
                     <option value="Other">Other</option>
                 </select>
                 <label for="tournamentFlyer">Tournament Flyer</label>
-                <input type="file" class="form-control" name="tournamentFlyer" id="tournamentFlyer" placeholder="Tournament Flyer">
+                <input type="file" class="form-control" name="tournamentFlyer" id="tournamentFlyer" placeholder="Tournament Flyer" multiple>
                 <label for="tournamentContactName">Tournament Contact Name</label>
                 <input type="text" class="form-control" name="tournamentContactName" id="tournamentContactName"
                        placeholder="Tournament Contact Name">
