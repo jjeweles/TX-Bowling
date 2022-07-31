@@ -13,6 +13,7 @@ module.exports.addTourneyToDB = async (req, res, next) => {
     const newTourney = new Tourney(req.body);
     newTourney.tournamentFlyer = req.files.map(file => ({url: file.path, filename: file.filename}));
     newTourney.save();
+    req.flash('success', 'Tournament added successfully!');
     res.redirect('/addtourney');
 }
 
@@ -81,6 +82,7 @@ module.exports.editTournament = async (req, res, next) => {
 module.exports.updateTournament = async (req, res, next) => {
     const {id} = req.params;
     const tournament = await Tourney.findByIdAndUpdate(id, {...req.body});
+    req.flash('success', 'Tournament updated successfully!');
     res.redirect(`/tournaments/${id}`);
 }
 
@@ -89,5 +91,6 @@ module.exports.deleteTournament = async (req, res, next) => {
     let city = await Tourney.findById(id);
     city = city.tournamentLocation;
     const tournament = await Tourney.findByIdAndDelete(id);
+    req.flash('success', 'Tournament deleted successfully!');
     res.redirect(`/${city}`);
 }

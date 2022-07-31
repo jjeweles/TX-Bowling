@@ -14,15 +14,15 @@ function phoneFormat(input) {//returns (###) ###-####
 }
 
 // add success message after form submit
-const tourneyForm = document.querySelector('.tournamentForm');
-const form = document.querySelector('.tournamentForm2');
-const thankYouMessage = document.querySelector('#thank-you-message');
-tourneyForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    thankYouMessage.classList.add('show');
-    tourneyForm.style.display = 'none';
-    setTimeout(() => form.submit(), 2000);
-});
+// const tourneyForm = document.querySelector('.tournamentForm');
+// const form = document.querySelector('.tournamentForm2');
+// const thankYouMessage = document.querySelector('#thank-you-message');
+// tourneyForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     thankYouMessage.classList.add('show');
+//     tourneyForm.style.display = 'none';
+//     setTimeout(() => form.submit(), 2000);
+// });
 
 // disable picking dates in the past on form
 tournamentDate = document.getElementById("tournamentDate");

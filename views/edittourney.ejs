@@ -4,7 +4,6 @@
         <header>
             <h2>-- Edit Tournament --</h2>
         </header>
-        <p id="thank-you-message">Tournament Updated Successfully! Redirecting...</p>
         <div class="form-group tournamentForm">
             <form method="post" action="/tournaments/<%= tournament.id %>?_method=PUT" class="tournamentForm2"
                   enctype="multipart/form-data">
@@ -16,12 +15,21 @@
                        placeholder="Tournament Date" value="<%= tournament.tournamentDate %>" required>
                 <label for="tournamentLocation">Tournament Location</label>
                 <select class="form-control" name="tournamentLocation" id="tournamentLocation" required>
-                    <option selected disabled>Select a location</option>
-                    <option value="austin">Austin</option>
-                    <option value="dallas">Dallas</option>
-                    <option value="houston">Houston</option>
-                    <option value="sanantonio">San Antonio</option>
-                    <option value="other">Other</option>
+                    <option value="austin" <%= tournament.tournamentLocation === 'austin' ? 'selected' : '' %>>
+                        Austin
+                    </option>
+                    <option value="dallas" <%= tournament.tournamentLocation === 'dallas' ? 'selected' : '' %>>
+                        Dallas
+                    </option>
+                    <option value="houston" <%= tournament.tournamentLocation === 'houston' ? 'selected' : '' %>>
+                        Houston
+                    </option>
+                    <option value="sanantonio" <%= tournament.tournamentLocation === 'sanantonio' ? 'selected' : '' %>>
+                        San Antonio
+                    </option>
+                    <option value="other" <%= tournament.tournamentLocation === 'other' ? 'selected' : '' %>>
+                        Other
+                    </option>
                 </select>
                 <label for="tournamentFlyer">Tournament Flyer</label>
                 <input type="file" class="form-control" name="tournamentFlyer" id="tournamentFlyer"
@@ -38,7 +46,7 @@
                        onInput="this.value=phoneFormat(this.value)" value="<%= tournament.tournamentContactPhone %>">
                 <input type="submit">
             </form>
-            <a href="/tournaments/<%= tournament.id %>" class="btn btn-primary">Back to Tournament</a>
+            <a href="/tournaments/<%= tournament.id %>">Back to Tournament</a>
         </div>
     </div>
 </section>
