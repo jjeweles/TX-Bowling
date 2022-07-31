@@ -6,6 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 const mongoose = require('mongoose');
 const express = require('express');
 const path = require('path');
+const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const AppError = require('./utils/AppError');
 const {errorHandler} = require("./utils/errorHandler");
@@ -25,6 +26,7 @@ app.use(express.static("node_modules/bootstrap/js"));
 app.use(express.static("node_modules/jquery/js"));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');

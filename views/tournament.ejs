@@ -12,7 +12,7 @@
                     <img src="<%= tournament.tournamentFlyer[0].url %>" alt="<%= tournament.tournamentName %>"
                          class="tournamentFlyer">
                 <% } else { %>
-                    <img src="https://via.placeholder.com/300x200" alt="<%= tournament.tournamentName %>"
+                    <img src="/images/tournament_template.jpg" alt="<%= tournament.tournamentName %>"
                          class="tournamentFlyer">
                 <% } %>
 
@@ -27,6 +27,13 @@
                 <p>
                     <b>Contact #:</b> <%= tournament.tournamentContactPhone %>
                 </p>
+                <p>
+                    <a href="/tournaments/<%= tournament.id %>">View</a> |
+                    <a href="/tournaments/<%= tournament.id %>/edit">Edit</a>
+                </p>
+                <form action="/tournaments/<%= tournament.id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete">
+                </form>
             </div>
         </div>
     </div>

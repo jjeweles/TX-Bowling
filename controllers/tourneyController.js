@@ -71,3 +71,23 @@ module.exports.getTournament = async (req, res, next) => {
     const tournament = await Tourney.findById(id);
     res.render('tournament', {tournament});
 }
+
+module.exports.editTournament = async (req, res, next) => {
+    const {id} = req.params;
+    const tournament = await Tourney.findById(id);
+    res.render('edittourney', {tournament});
+}
+
+module.exports.updateTournament = async (req, res, next) => {
+    const {id} = req.params;
+    const tournament = await Tourney.findByIdAndUpdate(id, {...req.body});
+    res.redirect(`/tournaments/${id}`);
+}
+
+module.exports.deleteTournament = async (req, res, next) => {
+    const {id} = req.params;
+    let city = await Tourney.findById(id);
+    city = city.tournamentLocation;
+    const tournament = await Tourney.findByIdAndDelete(id);
+    res.redirect(`/${city}`);
+}

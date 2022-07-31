@@ -5,6 +5,6 @@ const indexController = require('../controllers/indexController');
 
 router.get('/', indexController.getIndex);
 
-router.get('/forums', indexController.getForums);
+router.get('/chat', indexController.getChat);
 
 module.exports = router;

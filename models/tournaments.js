@@ -19,6 +19,7 @@ const tourneySchema = new mongoose.Schema({
     },
     tournamentContactEmail: {
         type: String,
+        lowercase: true,
         default: null
     },
     tournamentContactPhone: {

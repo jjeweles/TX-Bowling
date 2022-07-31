@@ -20,6 +20,12 @@ router.get('/itaaverages', wrapAsync(tourneyController.getItaAverages));
 
 router.post('/itasearch', wrapAsync(tourneyController.getItaSearch));
 
-router.get('/tournaments/:id', wrapAsync(tourneyController.getTournament));
+router
+    .get('/tournaments/:id', wrapAsync(tourneyController.getTournament))
+    .put('/tournaments/:id', tourneyAuth, upload.array('tournamentFlyer'), wrapAsync(tourneyController.updateTournament))
+    .delete('/tournaments/:id', tourneyAuth, wrapAsync(tourneyController.deleteTournament));
+
+router.get('/tournaments/:id/edit', wrapAsync(tourneyController.editTournament));
+
 
 module.exports = router;
