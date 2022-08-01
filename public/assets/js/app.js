@@ -13,21 +13,12 @@ function phoneFormat(input) {//returns (###) ###-####
     return input;
 }
 
-// add success message after form submit
-// const tourneyForm = document.querySelector('.tournamentForm');
-// const form = document.querySelector('.tournamentForm2');
-// const thankYouMessage = document.querySelector('#thank-you-message');
-// tourneyForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     thankYouMessage.classList.add('show');
-//     tourneyForm.style.display = 'none';
-//     setTimeout(() => form.submit(), 2000);
-// });
-
 // disable picking dates in the past on form
 tournamentDate = document.getElementById("tournamentDate");
 const today = new Date().toISOString().split('T')[0];
-tournamentDate.setAttribute('min', today);
+if (tournamentDate !== null) {
+    tournamentDate.setAttribute('min', today);
+}
 
 // real time search of ITA averages
 // onkeyup="searchIta()"

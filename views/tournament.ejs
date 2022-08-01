@@ -28,12 +28,16 @@
                     <b>Contact #:</b> <%= tournament.tournamentContactPhone %>
                 </p>
                 <p>
-                    <a href="/<%= tournament.tournamentLocation %>">Back</a> |
+                    <a href="/<%= tournament.tournamentLocation %>">Back</a>
+                    <% if(currentUser) { %>|
                     <a href="/tournaments/<%= tournament.id %>/edit">Edit</a>
+                    <% } %>
                 </p>
-                <form action="/tournaments/<%= tournament.id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete">
-                </form>
+                <% if(currentUser) { %>
+                    <form action="/tournaments/<%= tournament.id %>?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete">
+                    </form>
+                <% } %>
             </div>
         </div>
     </div>

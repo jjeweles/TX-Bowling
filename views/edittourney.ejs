@@ -11,10 +11,10 @@
                 <input type="text" class="form-control" name="tournamentName" id="tournamentName"
                        placeholder="Tournament Name" value="<%= tournament.tournamentName %>" required>
                 <label for="tournamentDate">Tournament Date</label>
-                <input type="date" class="form-control" name="tournamentDate" id="tournamentDate"
-                       placeholder="Tournament Date" value="<%= tournament.tournamentDate %>" required>
+                <input type="date" name="tournamentDate" id="tournamentDate"
+                       placeholder="Tournament Date" value="<%= tournamentDate %>" required>
                 <label for="tournamentLocation">Tournament Location</label>
-                <select class="form-control" name="tournamentLocation" id="tournamentLocation" required>
+                <select name="tournamentLocation" id="tournamentLocation" required>
                     <option value="austin" <%= tournament.tournamentLocation === 'austin' ? 'selected' : '' %>>
                         Austin
                     </option>
@@ -32,7 +32,7 @@
                     </option>
                 </select>
                 <label for="tournamentFlyer">Tournament Flyer</label>
-                <input type="file" class="form-control" name="tournamentFlyer" id="tournamentFlyer"
+                <input type="file" name="tournamentFlyer" id="tournamentFlyer"
                        placeholder="Tournament Flyer" multiple>
                 <label for="tournamentContactName">Tournament Contact Name</label>
                 <input type="text" class="form-control" name="tournamentContactName" id="tournamentContactName"

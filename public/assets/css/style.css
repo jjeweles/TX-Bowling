@@ -16,23 +16,6 @@ a:hover {
     transition: all 0.4s ease-in-out;
 }
 
-/*#thank-you-message {*/
-/*    display: none;*/
-/*    opacity: 0;*/
-/*}*/
-
-/*#thank-you-message.show {*/
-/*    display: block;*/
-/*    text-align: center;*/
-/*    font-size: 2em;*/
-/*    background-color: rgba(150, 211, 140, 0.47);*/
-/*    color: #222;*/
-/*    border-radius: 10px;*/
-/*    font-weight: bold;*/
-/*    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;*/
-/*    padding: 10px;*/
-/*}*/
-
 .errorMsg {
     width: fit-content;
     padding: 12px;

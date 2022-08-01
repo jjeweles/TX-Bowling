@@ -1,5 +1,6 @@
 const Bowler = require("../models/itabowlers.js");
 const Tourney = require("../models/tournaments.js");
+const moment = require('moment');
 
 module.exports.getCalendar = (req, res) => {
     res.render('calendar');
@@ -76,7 +77,8 @@ module.exports.getTournament = async (req, res, next) => {
 module.exports.editTournament = async (req, res, next) => {
     const {id} = req.params;
     const tournament = await Tourney.findById(id);
-    res.render('edittourney', {tournament});
+    const tournamentDate = moment(tournament.tournamentDate).locale('en').format('YYYY-MM-DD');
+    res.render('edittourney', {tournament, tournamentDate});
 }
 
 module.exports.updateTournament = async (req, res, next) => {
