@@ -3,7 +3,7 @@ const router = express.Router();
 const wrapAsync = require('../utils/wrapAsync');
 const indexController = require('../controllers/indexController');
 
-router.get('/', indexController.getIndex);
+router.get('/', wrapAsync(indexController.getIndex));
 
 router.get('/chat', indexController.getChat);
 

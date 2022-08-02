@@ -3,9 +3,10 @@ const userController = require('../controllers/userController.js');
 const router = express.Router();
 const wrapAsync = require('../utils/wrapAsync');
 const passport = require("passport");
+const {isLoggedIn} = require("../middleware");
 
 router.route('/register')
-    .get(userController.getRegisterPage)
+    .get(isLoggedIn, userController.getRegisterPage)
     .post(wrapAsync(userController.registerUser))
 
 router.route('/login')

@@ -46,15 +46,17 @@
                             <li><a href="/other">Other Areas</a></li>
                         </ul>
                     </li>
-                    <li><a href="/chat">Chat</a></li>
                     <li>
                         <span class="opener">TX Tournaments</span>
                         <ul>
                             <li><a href="/calendar">Calendar</a></li>
-                            <li><a href="/addtourney">Add A Tournament</a></li>
+                            <% if(currentUser) { %>
+                                <li><a href="/addtourney">Add A Tournament</a></li>
+                            <% } %>
                             <li><a href="/itaaverages">ITA Averages</a></li>
                         </ul>
                     </li>
+                    <li><a href="/chat">Chat</a></li>
                 </ul>
             </nav>
 
