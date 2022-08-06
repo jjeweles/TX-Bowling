@@ -2,28 +2,29 @@
 <section id="banner">
     <div class="content">
         <header>
-            <h2>--
-                <%= tournament.tournamentName %>
-                --</h2>
+            <h2>-- <%= tournament.tournamentName %> --</h2>
         </header>
         <div class="tournamentDisplay">
             <div class="tournamentPageFlyer">
                 <% if (tournament.tournamentFlyer[0] !== undefined) { %>
-                    <img src="<%= tournament.tournamentFlyer[0].url %>" alt="<%= tournament.tournamentName %>"
-                         class="tournamentFlyer">
+                <img
+                    src="<%= tournament.tournamentFlyer[0].url %>"
+                    alt="<%= tournament.tournamentName %>"
+                    class="tournamentFlyer"
+                />
                 <% } else { %>
-                    <img src="/images/tournament_template.jpg" alt="<%= tournament.tournamentName %>"
-                         class="tournamentFlyer">
+                <img
+                    src="/images/tournament_template.jpg"
+                    alt="<%= tournament.tournamentName %>"
+                    class="tournamentFlyer"
+                />
                 <% } %>
-
             </div>
             <div class="tournament">
                 <p>
                     <b>Date:</b> <%= tournament.tournamentDate.toDateString() %>
                 </p>
-                <p>
-                    <b>Director:</b> <%= tournament.tournamentContactName %>
-                </p>
+                <p><b>Director:</b> <%= tournament.tournamentContactName %></p>
                 <p>
                     <b>Contact #:</b> <%= tournament.tournamentContactPhone %>
                 </p>
@@ -34,9 +35,12 @@
                     <% } %>
                 </p>
                 <% if(currentUser) { %>
-                    <form action="/tournaments/<%= tournament.id %>?_method=DELETE" method="POST">
-                        <input type="submit" value="Delete">
-                    </form>
+                <form
+                    action="/tournaments/<%= tournament.id %>?_method=DELETE"
+                    method="POST"
+                >
+                    <input type="submit" value="Delete" />
+                </form>
                 <% } %>
             </div>
         </div>

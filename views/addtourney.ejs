@@ -5,15 +5,36 @@
             <h2>-- Add A Tournament --</h2>
         </header>
         <div class="form-group tournamentForm">
-            <form method="post" action="/addtourneypost" class="tournamentForm2" enctype="multipart/form-data">
+            <form
+                method="post"
+                action="/addtourneypost"
+                class="tournamentForm2"
+                enctype="multipart/form-data"
+            >
                 <label for="tournamentName">Tournament Name</label>
-                <input type="text" class="form-control" name="tournamentName" id="tournamentName"
-                       placeholder="Tournament Name" required>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="tournamentName"
+                    id="tournamentName"
+                    placeholder="Tournament Name"
+                    required
+                />
                 <label for="tournamentDate">Tournament Date</label>
-                <input type="date" class="form-control" name="tournamentDate" id="tournamentDate"
-                       placeholder="Tournament Date" required>
+                <input
+                    type="date"
+                    class="form-control"
+                    name="tournamentDate"
+                    id="tournamentDate"
+                    placeholder="Tournament Date"
+                    required
+                />
                 <label for="tournamentLocation">Tournament Location</label>
-                <select name="tournamentLocation" id="tournamentLocation" required>
+                <select
+                    name="tournamentLocation"
+                    id="tournamentLocation"
+                    required
+                >
                     <option selected disabled>Select a location</option>
                     <option value="austin">Austin</option>
                     <option value="dallas">Dallas</option>
@@ -22,19 +43,45 @@
                     <option value="other">Other</option>
                 </select>
                 <label for="tournamentFlyer">Tournament Flyer</label>
-                <input type="file" name="tournamentFlyer" id="tournamentFlyer"
-                       placeholder="Tournament Flyer" multiple>
-                <label for="tournamentContactName">Tournament Contact Name</label>
-                <input type="text" class="form-control" name="tournamentContactName" id="tournamentContactName"
-                       placeholder="Tournament Contact Name">
-                <label for="tournamentContactEmail">Tournament Contact Email</label>
-                <input type="email" class="form-control" name="tournamentContactEmail" id="tournamentContactEmail"
-                       placeholder="Tournament Contact Email">
-                <label for="tournamentContactPhone">Tournament Contact Phone</label>
-                <input type="tel" class="form-control" name="tournamentContactPhone" id="tournamentContactPhone"
-                       placeholder="Tournament Contact Phone"
-                       onInput="this.value=phoneFormat(this.value)">
-                <input type="submit">
+                <input
+                    type="file"
+                    name="tournamentFlyer"
+                    id="tournamentFlyer"
+                    placeholder="Tournament Flyer"
+                    multiple
+                />
+                <label for="tournamentContactName"
+                    >Tournament Contact Name</label
+                >
+                <input
+                    type="text"
+                    class="form-control"
+                    name="tournamentContactName"
+                    id="tournamentContactName"
+                    placeholder="Tournament Contact Name"
+                />
+                <label for="tournamentContactEmail"
+                    >Tournament Contact Email</label
+                >
+                <input
+                    type="email"
+                    class="form-control"
+                    name="tournamentContactEmail"
+                    id="tournamentContactEmail"
+                    placeholder="Tournament Contact Email"
+                />
+                <label for="tournamentContactPhone"
+                    >Tournament Contact Phone</label
+                >
+                <input
+                    type="tel"
+                    class="form-control"
+                    name="tournamentContactPhone"
+                    id="tournamentContactPhone"
+                    placeholder="Tournament Contact Phone"
+                    onInput="this.value=phoneFormat(this.value)"
+                />
+                <input type="submit" />
             </form>
         </div>
     </div>

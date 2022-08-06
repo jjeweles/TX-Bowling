@@ -13,7 +13,7 @@ const ejsMate = require('ejs-mate');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/users.js');
-const {errorHandler} = require("./utils/errorHandler");
+const { errorHandler } = require('./utils/errorHandler');
 const indexRoutes = require('./routes/indexRoutes');
 const cityRoutes = require('./routes/cityRoutes');
 const tourneyRoutes = require('./routes/tourneyRoutes');
@@ -21,13 +21,14 @@ const userRoutes = require('./routes/userRoutes');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/txtourneys', {useNewUrlParser: true})
+mongoose
+    .connect('mongodb://localhost:27017/txtourneys', { useNewUrlParser: true })
     .then(() => console.log('Connected to MongoDB...'))
-    .catch(err => console.error('Could not connect to MongoDB...', err));
+    .catch((err) => console.error('Could not connect to MongoDB...', err));
 
 app.use(express.static('public'));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 const sessionConfig = {
@@ -36,10 +37,10 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        expires: Date.now() + (1000 * 60 * 60 * 24 * 7),
-        maxAge: (1000 * 60 * 60 * 24 * 7)
-    }
-}
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
+};
 app.use(session(sessionConfig));
 app.use(flash());
 
@@ -61,7 +62,7 @@ app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use('/', indexRoutes)
+app.use('/', indexRoutes);
 app.use('/', cityRoutes);
 app.use('/', tourneyRoutes);
 app.use('/', userRoutes);

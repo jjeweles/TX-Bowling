@@ -6,15 +6,16 @@
         </header>
         <div class="tournamentDisplay">
             <% for (let tournament of tournaments) { %>
-                <div class="tournament">
-                    <h3><%= tournament.tournamentName %></h3>
-                    <p>
-                        <b>Date:</b> <%= tournament.tournamentDate.toDateString() %><br>
-                        <b>Director:</b> <%= tournament.tournamentContactName %><br/>
-                        <b>Contact #:</b> <%= tournament.tournamentContactPhone %>
-                    </p>
-                    <a href="/tournaments/<%= tournament.id %>">View</a>
-                </div>
+            <div class="tournament">
+                <h3><%= tournament.tournamentName %></h3>
+                <p>
+                    <b>Date:</b> <%= tournament.tournamentDate.toDateString()
+                    %><br />
+                    <b>Director:</b> <%= tournament.tournamentContactName %><br />
+                    <b>Contact #:</b> <%= tournament.tournamentContactPhone %>
+                </p>
+                <a href="/tournaments/<%= tournament.id %>">View</a>
+            </div>
             <% } %>
         </div>
     </div>
