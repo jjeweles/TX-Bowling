@@ -5,7 +5,17 @@ const Bowler = require("../models/itabowlers");
 module.exports.getIndex = async (req, res) => {
     let tournament = await Tourney.find().sort({tournamentDate: 1}).limit(1);
     tournament = tournament[0];
-    res.render('index', {tournament});
+    if (tournament) {
+        res.render('index', {tournament});
+    } else {
+        tournament = {
+            tournamentName: 'No tournament found',
+            tournamentDate: new Date(),
+            tournamentFlyer: '',
+
+        };
+        res.render('index', {tournament});
+    }
 };
 
 module.exports.getChat = async (req, res) => {
