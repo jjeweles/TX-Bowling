@@ -28,9 +28,5 @@
     "start": "node server.js"
   },
   "author": "justin jewell",
-  "license": "ISC",
-  "devDependencies": {
-    "mongoose-paginate": "^5.0.3",
-    "multer": "^1.4.5-lts.1"
-  }
+  "license": "ISC"
 }
