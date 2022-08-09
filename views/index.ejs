@@ -3,7 +3,7 @@
     <div class="content">
         <header>
             <h2>-- <%= tournament.tournamentName %> --</h2>
-            <p>-- <%= tournament.tournamentLocation %> --</p>
+            <p>-- LOCATION: <%= tournament.tournamentLocation %> --</p>
         </header>
         <p><b>Date:</b> <%= tournament.tournamentDate.toDateString() %></p>
         <p><b>Director:</b> <%= tournament.tournamentContactName %></p>
@@ -11,24 +11,24 @@
         <ul class="actions">
             <li>
                 <a href="/tournaments/<%= tournament._id %>" class="button big"
-                    >Join Tournament</a
+                >Join Tournament</a
                 >
             </li>
         </ul>
     </div>
     <span class="image object">
         <% if (tournament.tournamentFlyer[0] !== undefined) { %>
-        <img
-            src="<%= tournament.tournamentFlyer[0].url %>"
-            alt="<%= tournament.tournamentName %>"
-            class="tournamentFlyer"
-        />
+            <img
+                    src="<%= tournament.tournamentFlyer[0].url %>"
+                    alt="<%= tournament.tournamentName %>"
+                    class="tournamentFlyer"
+            />
         <% } else { %>
-        <img
-            src="/images/tournament_template.jpg"
-            alt="<%= tournament.tournamentName %>"
-            class="tournamentFlyer"
-        />
+            <img
+                    src="/images/tournament_template.jpg"
+                    alt="<%= tournament.tournamentName %>"
+                    class="tournamentFlyer"
+            />
         <% } %>
     </span>
 </section>

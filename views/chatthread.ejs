@@ -1,0 +1,47 @@
+<% layout('./layouts/boilerplate') %>
+<section id="banner">
+    <div class="content">
+        <div class="chatDisplay">
+            <ul>
+                <li class="message-row">
+                    <h4 class="message-title"><%= chat[0].chatTitle %></h4>
+                    <div class="message-bottom">
+                        <p class="message-time"><em>posted</em> <%= chat[0].createdAt.toLocaleString() %> <em>by</em>
+                            <u><%= chat[0].chatName %></u></p>
+                        <p class="message-comment">
+                            <%= chat[0].chatMessage %>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <h5>Replies:</h5>
+            <% for (let i = 0; i < chat[0].chatReplies.length; i++) { %>
+
+                <div class="chatReply">
+                    <p class="replyMsg"><%= chat[0].chatReplies[i].chatReply %></p>
+                    <div class="replyName">
+                        <% if (currentUser) { %>
+                            <form id="deleteForm" action="/chat/<%= chat[0]._id %>?_method=DELETE" method="POST">
+                                <input type="hidden" name="replyID" value="<%= chat[0].chatReplies[i]._id %>">
+                                <input type="submit" value="Delete" class="deleteButton">
+                            </form>
+                        <% } %>
+                        <p>
+                            <%= chat[0].chatReplies[i].chatReplyName %>
+                        </p>
+                    </div>
+                </div>
+            <% } %>
+            <a href="/chat/">Back to Discussion</a>
+        </div>
+
+        <hr>
+        <div class="add-chat" id="chat-post">
+            <form action="/chat/<%= chat[0]._id %>" method="POST">
+                <textarea name="chatReply" id="message" cols="50" rows="5" required></textarea>
+                <input type="text" name="chatReplyName" placeholder="Your Name" required>
+                <input type="submit" value="Reply">
+            </form>
+        </div>
+    </div>
+</section>

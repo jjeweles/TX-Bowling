@@ -3,6 +3,7 @@
 1. STYLING ADD TOURNEY PAGE
 2. STYLING TOURNAMENT SHOW PAGE
 3. STYLING ITA AVERAGES PAGE
+4. STYLING FOR CHAT PAGE
 
 * light grey d3d6db
 * darker grey 3a4750
@@ -143,6 +144,8 @@ thead th {
 }
 
 .pag-container {
+    display: flex;
+    justify-content: center;
     padding: 2px;
     text-align: center;
     font-size: 1rem;
@@ -159,6 +162,7 @@ li a {
     border-radius: 5px;
     border: 1px solid #ccc;
     padding: 0 2px 2px;
+    margin-right: 8px;
 }
 
 .pagination li:hover {
@@ -180,6 +184,75 @@ ul.pagination li:last-child, ul.pagination li:first-child {
 
 .mobile-pagination {
     display: none;
+}
+
+/* STYLING FOR CHAT PAGE */
+.add-chat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.add-chat textarea, input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.chatDisplay li {
+    list-style: none;
+}
+
+.chatDisplay {
+    background-color: #E6EBEE;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    white-space: normal;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.chatOne {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+}
+
+.message-comment {
+    max-width: inherit;
+}
+
+.chatReply {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+}
+
+.replyMsg {
+    font-style: italic;
+}
+
+.replyName {
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: flex-end;
+    justify-content: space-between;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: .85rem;
 }
 
 /* RESPONSIVE CSS FOR SMALLER SCREENS AND MOBILE */
@@ -281,7 +354,9 @@ ul.pagination li:last-child, ul.pagination li:first-child {
     }
 
     .mobile-pagination {
-        display: inline;
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
     }
 
     ul.pagination li {
@@ -316,5 +391,9 @@ ul.pagination li:last-child, ul.pagination li:first-child {
 
     .tournamentPageFlyer {
         width: 100%;
+    }
+
+    .chatDisplay {
+        margin-bottom: 35px;
     }
 }

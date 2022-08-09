@@ -5,6 +5,16 @@ const indexController = require('../controllers/indexController');
 
 router.get('/', wrapAsync(indexController.getIndex));
 
-router.get('/chat', indexController.getChat);
+router
+    .route('/chat')
+    .get(wrapAsync(indexController.getChat))
+    .post(indexController.postChat);
+
+router
+    .route('/chat/:id')
+    .get(wrapAsync(indexController.getChatThread))
+    .post(wrapAsync(indexController.postChatReply))
+    .delete(wrapAsync(indexController.deleteChatReply))
+    .delete(wrapAsync(indexController.deleteChat));
 
 module.exports = router;

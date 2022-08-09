@@ -2,8 +2,127 @@
 <section id="banner">
     <div class="content">
         <header>
-            <h2>-- Chat --</h2>
+            <h2>-- TX Bowling Chat --</h2>
+            <p><a href="#chat-post">Add to Discussion</a></p>
+
         </header>
-        <p>Page - add discussion forum for questions</p>
+        <div class="chatDisplay">
+            <% for (let message of chats) { %>
+                <div class="chatOne">
+                    <ul>
+                        <li class="message-row">
+                            <h4 class="message-title">
+                                <a href="/chat/<%= message._id %>"><%= message.chatTitle %></a>
+                            </h4>
+                            <div class="message-bottom">
+                                <p class="message-time-auth"><em>posted</em> <%= message.createdAt.toLocaleString() %>
+                                    <em>by</em> <u><%= message.chatName %></u></p>
+                                <p class="message-comment">
+                                    <%= message.chatMessage %>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <% if(currentUser) { %>
+                    <form id="deleteForm" action="/chat/<%= message._id %>?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete"/>
+                    </form>
+                <% } %>
+                <hr>
+            <% } %>
+        </div>
+
+        <div class="pag-container pag-responsive-show">
+            <ul class="pagination">
+                <% if (!prevPage) { %>
+                    <li class="disabled-link"><a href="#">&laquo;</a></li>
+                <% } else { %>
+                    <li><a href="/chat?page=1">&laquo;</a></li>
+                    <% if (page > 10) { %>
+                        <li>
+                            <a href="/chat?page=<%= page - 10 %>">&hellip;</a>
+                        </li>
+                    <% } else { %>
+                        <li><a href="/chat?page=1">&hellip;</a></li>
+                    <% } %>
+                <% } %>
+                <% for (let i = page; i <= (parseInt(page) + 9);
+                        i++) { %> <% if (i <= page_list) { %>
+                    <li><a href="/chat?page=<%= i %>"><%= i %></a></li>
+                <% } %>
+                <% } %>
+                <% if (!nextPage) { %>
+                    <li class="disabled-link"><a href="#">&raquo;</a></li>
+                <% } else if (isNaN(page)) { %>
+                    <li><a href="/chat?page=2">&raquo;</a></li>
+                <% } else { %> <% if (page < (page_list - 10)) { %>
+                    <li>
+                        <a href="/chat?page=<%= parseInt(page) + 10 %>"
+                        >&hellip;</a
+                        >
+                    </li>
+                <% } else { %>
+                    <li>
+                        <a href="/chat?page=<%= page_list %>">&hellip;</a>
+                    </li>
+                <% } %>
+                <li>
+                    <a href="/chat?page=<%= page_list %>">&raquo;</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+        <!--        PAGINATION FOR MOBILE     -->
+        <div class="pag-container mobile-pagination">
+            <ul class="pagination">
+                <% if (!prevPage) { %>
+                    <li class="disabled-link"><a href="#">&laquo;</a></li>
+                <% } else { %>
+                    <li><a href="/chat?page=1">&laquo;</a></li>
+                    <% if (page > 10) { %>
+                        <li>
+                            <a href="/chat?page=<%= page - 10 %>">&hellip;</a>
+                        </li>
+                    <% } else { %>
+                        <li><a href="/chat?page=1">&hellip;</a></li>
+                    <% } %>
+                <% } %>
+                <% for (let i = page; i <= (parseInt(page) + 3);
+                        i++) { %> <% if (i <= page_list) { %>
+                    <li><a href="/chat?page=<%= i %>"><%= i %></a></li>
+                <% } %>
+                <% } %>
+                <% if (!nextPage) { %>
+                    <li class="disabled-link"><a href="#">&raquo;</a></li>
+                <% } else if (isNaN(page)) { %>
+                    <li><a href="/chat?page=2">&raquo;</a></li>
+                <% } else { %> <% if (page < (page_list - 10)) { %>
+                    <li>
+                        <a href="/chat?page=<%= parseInt(page) + 10 %>"
+                        >&hellip;</a
+                        >
+                    </li>
+                <% } else { %>
+                    <li>
+                        <a href="/chat?page=<%= page_list %>">&hellip;</a>
+                    </li>
+                <% } %>
+                <li>
+                    <a href="/chat?page=<%= page_list %>">&raquo;</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+
+        <hr>
+        <div class="add-chat" id="chat-post">
+            <form action="/chat" method="POST">
+                <input type="text" name="chatTitle" placeholder="Title" required>
+                <textarea name="chatMessage" id="message" cols="50" rows="5" required></textarea>
+                <input type="text" name="chatName" placeholder="Your Name" required>
+                <input type="submit" value="Post Message">
+            </form>
+        </div>
     </div>
 </section>
