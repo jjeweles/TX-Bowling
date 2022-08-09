@@ -1,6 +1,6 @@
 // require mongoose
 const mongoose = require('mongoose');
-const paginate = require('mongoose-paginate-v2');
+const paginate = require('mongoose-paginate');
 
 const bowlerSchema = new mongoose.Schema(
     {
